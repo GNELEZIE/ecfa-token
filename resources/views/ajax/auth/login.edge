@@ -1,0 +1,65 @@
+
+<script>
+
+  ///////////////////// Login with api /////////////
+  $("#Signup").click(function(e){
+    e.preventDefault()
+    $("#Signup").empty().append('<i class="fa fa-spinner fa-spin"></i> Connexion en cours .....');
+    $("#Signup").prop('disabled', false);
+    var email = $('input[name="email"]').val();
+    var password = $('input[name="password"]').val();
+    var csrf_token=$('meta[name="csrf_token"]').attr('content');
+
+    setTimeout(()=>{
+      if (email.length=="" || password.length==""){
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur, ces champs sont réquis ',
+          text: '!!!!',
+        })
+        $("#Signup").empty().append('<i class="fa fa-repeat"></i> Réessayer encore');
+        $("#Signup").prop('disabled', false);
+      }else {
+        $.ajax({
+          type:'POST',
+          url:"{{route('authUser')}}",
+          data:{
+            email:email,
+            password:password,
+            '_token' :csrf_token,
+          },
+          dataType: "text",
+          success:function(response){
+            if (response == 200){
+              Swal.fire(
+                'Connexion reussie !',
+                'rédirection en cours ......',
+                'success'
+              )
+              setTimeout(function (){
+                window.location="/"
+              },3000);
+            }
+            if (response == 504){
+              Swal.fire({
+                icon: 'error',
+                title: 'Erreur de connexion !!!',
+                text: 'Verifiez votre adresse ou mot de passe.',
+              })
+              $("#Signup").empty().append('<i class="fa fa-repeat"></i> Réessayer encore');
+              $("#Signup").prop('disabled', false);
+            }
+          },
+          error:function (){
+            swal({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ces champs sont requs',
+            })
+          },
+        });
+      }
+    },3000)
+  });
+
+</script>

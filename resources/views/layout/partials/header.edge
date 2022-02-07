@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Token ECFA | ICO Economy</title>
+	<meta name="description" content="Arda is a Bitcoin and Cryptocurrency ICO Template by tempload." />
+	<meta name="keywords" content="bitcoin, ethereum, monero, ico, token, free token, btc, eth" />
+	<meta name="author" content="tempload"/>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="{{myurls}}style/assets/images/logos/myicon.png" />
+
+	<!-- Bootstrap & Plugins CSS -->
+	<link href="{{myurls}}style/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	{{--  <link href="{{myurls}}style/assets/css/tes/font-awesome.min.css" rel="stylesheet" type="text/css">  --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />	<!-- Custom CSS -->
+	<link href="{{myurls}}style/assets/css/green.css?v=1.4.0" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{{myurls}}libs/intltelinput/css/intlTelInput.min.css"/>
+<style>
+	.welcome-area .register {
+    top: 76% !important;
+}
+	.iti{
+    width: 100%;
+}
+	.mylogo{
+		width: 90px;
+	}
+    .titre25{
+        font-size: 25px !important;
+    }
+	.btn-secondary-box:hover{
+	border: 1px solid #01405F !important;
+    background: none !important;
+    color: #01405F !important;
+	}
+</style>	
+</head>
+<body>
+ <div class="loading-wrapper">
+		<div class="loading">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>	 
+
+
+	<header class="header-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 position-relative">
+					<nav class="main-nav">
+
+						<a href="{{myurls}}" class="logo m-2">
+							<img src="style/assets/images/logos/logowhite.png" class="light-logo mylogo" alt="Arda ICO"/>
+							<img src="style/assets/images/logos/logos.png" class="dark-logo mylogo" alt="Arda ICO"/>
+						</a>
+						@if(session.get('Users'))
+						<div class="lang">
+							<div class="selected">
+								<span>0 ECFA</span>
+							</div>
+						
+						</div>
+						  @endif
+					
+					
+						<ul class="nav">
+							
+							<li><a href="#token-sale">VENTE</a></li>
+							<li><a href="#roadmap">ROADMAP</a></li>
+							<li><a href="#team">EQUIPE</a></li>
+							<li><a href="#faq">FAQ</a></li>
+							<li><a href="#contact">CONTACT</a></li>
+							@if(session.get('Users'))
+							<li><a href="{{ route('logout')}}" class="btn-nav-box">Déconnexion</a></li>
+						  @else
+							<li><a href="{{ route('register')}}" class="btn-nav-box">S'INSCRIRE</a></li>
+							<li><a href="{{ route('login')}}" class="btn-nav-box">CONNEXION</a></li>
+						  @endif
+							
+						</ul>
+						<a class='menu-trigger'>
+							<span>Menu</span>
+						</a>
+						<!-- ***** Menu End ***** -->						
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>

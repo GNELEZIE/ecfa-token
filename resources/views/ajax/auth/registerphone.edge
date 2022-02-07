@@ -1,0 +1,25 @@
+<script>
+    $("#phone").keyup(function (event) {
+    if (/\D/g.test(this.value)) {
+        //Filter non-digits from input value.
+        this.value = this.value.replace(/\D/g, '');
+    }
+});
+
+var inputPhone = document.querySelector("#phone");
+window.intlTelInput(inputPhone, {
+    initialCountry: 'ci',
+    utilsScript: "{{myurls}}libs/intltelinput/js/utils.js"
+});
+var iti = window.intlTelInputGlobals.getInstance(inputPhone);
+var countryData = iti.getSelectedCountryData();
+$('#isoPhone').val(countryData["iso2"]);
+$('#dialPhone').val(countryData["dialCode"]);
+inputPhone.addEventListener("countrychange", function() {
+    var iti = window.intlTelInputGlobals.getInstance(inputPhone);
+    var countryData = iti.getSelectedCountryData();
+    $('#isoPhone').val(countryData["iso2"]);
+    $('#dialPhone').val(countryData["dialCode"]);
+});
+
+</script>

@@ -1,0 +1,102 @@
+@layout('layout/app')
+@section('content')
+
+<section class="welcome-area bg-top-right" id="welcome-1" style="height: 1000px !important;min-height: inherit !important;">
+    <div class="header-token basic register">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+                    <h1>Pour faire un paiment vous devrez être connecter</h1>
+                    <a href="#" class="btn-secondary-box">Télécharger le whitepaper</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+                    <div class="box">
+                        <div class="token">
+                            <h2 class="title titre25">Nouveau compte</h2>
+                         
+                            <div class="contact-form">
+                             <div class="row">
+                                 <div class="col-md-6">
+                                    <div class="form-element pb-3">
+                                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Nom">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                    <div class="form-element pb-3">
+                                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Prénom">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-element pb-3">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-element pb-3">
+                                        <input type="text" name="phone" id="phone" class="form-control">
+                                        <input type="hidden" name="country" id="country" class="form-control">
+                                        <input type="hidden" name="dialPhone" id="dialPhone" class="form-control">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-element pb-3">
+                                        <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-element pb-3">
+                                        <input type="password" name="verifypassword" id="verifypassword" class="form-control" placeholder="Confirmer le mot de passe">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="form-element pb-3">
+                                        <input type="checkbox" name="check" id="check" value="non">
+                                        J'ai lu et j'accepte les conditions générales d'utilisation
+                                    </div>
+                                    <div class="form-element">
+                                        <button class="btn-secondary-box" id="Signup">Inscription</button>
+                                    </div>
+                                 </div>
+                            
+                               
+                            </div>
+                         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    		
+<canvas class="particles-js-canvas-el" width="1898" height="867" style="width: 100%; height: 100%;"></canvas></section>
+
+<script src="{{myurls}}style/assets/jquery/jquery-3.6.0.min.js"></script>
+<script src="{{myurls}}libs/intltelinput/js/intlTelInput.min.js"></script>
+@include('ajax/auth/register')
+<script>
+    $("#phone").keyup(function (event) {
+        if (/\D/g.test(this.value)) {
+            //Filter non-digits from input value.
+            this.value = this.value.replace(/\D/g, '');
+        }
+    });
+
+    var inputPhone = document.querySelector("#phone");
+    window.intlTelInput(inputPhone, {
+        initialCountry: 'ci',
+        utilsScript: "{{myurls}}libs/intltelinput/js/utils.js"
+    });
+    var iti = window.intlTelInputGlobals.getInstance(inputPhone);
+    var countryData = iti.getSelectedCountryData();
+    $('#country').val(countryData["iso2"]);
+    $('#dialPhone').val(countryData["dialCode"]);
+    inputPhone.addEventListener("countrychange", function() {
+        var iti = window.intlTelInputGlobals.getInstance(inputPhone);
+        var countryData = iti.getSelectedCountryData();
+        $('#country').val(countryData["iso2"]);
+        $('#dialPhone').val(countryData["dialCode"]);
+    });
+
+</script>
+@endsection

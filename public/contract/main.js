@@ -24,10 +24,6 @@ $(document).ready(async function () {
         });
       }
      
-
-    //  $("#_adress").text( accounts[0].account + " - ::::: - " +  accounts[0].balance + " eth") ;
-     // $("#_totalSuply").text( balances[address(0)] + " eth") ;
-
       return {
          error: false, account: accounts[0].account, balance: accounts[0].balance
         }
@@ -42,7 +38,6 @@ $(document).ready(async function () {
 if (typeof window.ethereum !== 'undefined') {
 //we use eth_accounts because it returns a list of addresses owned by us.
 const accounts = await ethereum.request({ method: 'eth_accounts' });
-
 
 }else{
    alert('MetaMask is not installed!');
@@ -83,9 +78,7 @@ const accounts = await ethereum.request({ method: 'eth_accounts' });
   }
   // INTERCONNEXION A NOTRE SMART CONTRACT
   async function connectSmartContract() {
-
     var IsMetamask = await CheckMetamaskConnection();
-
     if (IsMetamask) {
       try {
         myContract = await new web3.eth.Contract(
@@ -111,14 +104,12 @@ const accounts = await ethereum.request({ method: 'eth_accounts' });
           alert("transferer avec succès");
           console.log(event)
         });
-
           await myContract.events
         .Burn(async function (err, event) {
           //des actions
           if(err){
             alert(err)
-          }
-         
+          } 
           console.log(event)
         });
 
@@ -165,9 +156,6 @@ const accounts = await ethereum.request({ method: 'eth_accounts' });
       console.log("Vous devez installer metamask")
     }
   }
-
-
-
 
   // BOUTON DE CONNEXION AU COMPTE
   $('#minBurn').hide();

@@ -21,3 +21,19 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', 'HomePagesController.home').as('home')
+Route.get('/tes', 'HomePagesController.test').as('test')
+Route.get('/login', 'Auth/LoginController.login').as('login')
+
+// Register User
+Route.get('/register', 'Auth/RegistersController.register').as('register')
+
+
+Route.group(()=>{
+
+    Route.post('/authUser', 'Auth/LoginController.authUser').as('authUser')
+    Route.get('/logout', 'Auth/LoginController.logout').as('logout')
+    Route.post('/register', 'Auth/RegistersController.registrationUsers').as('registrationUsers')
+    Route.post('/updatePassword', 'Auth/LoginController.updatePassword').as('updatePassword')
+
+
+}).prefix("consumeapi/");

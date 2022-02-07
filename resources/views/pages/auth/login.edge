@@ -1,0 +1,45 @@
+@layout('layout/app')
+
+@section('content')
+
+<section class="welcome-area bg-top-right" id="welcome-1" style="height: 329px;">
+    <div class="header-token basic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+                    <h1>Pour faire un paiment vous devrez être connecter</h1>
+                    <a href="#" class="btn-secondary-box">Télécharger le whitepaper</a>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-12 align-self-center">
+                    <div class="box">
+                        <div class="token">
+                            <h2 class="title titre25">Connectez-vous</h2>
+                            <div class="contact-form">
+                                <div class="form-element pb-3">
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail">
+                                </div>
+                                <div class="form-element pb-3">
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
+                                </div>
+                                <div class="form-element">
+                                    <button class="btn-secondary-box" id="Signup">Connexion</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-to">
+        <a href="#what-is-ico">
+            <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+        </a>
+    </div>
+    <canvas class="particles-js-canvas-el" width="1898" height="867" style="width: 100%; height: 100%;"></canvas></section>
+
+
+<script src="{{myurls}}style/assets/jquery/jquery-3.6.0.min.js"></script>
+@include('ajax/auth/login')
+
+@endsection
