@@ -27,6 +27,8 @@ Route.get('/login', 'Auth/LoginController.login').as('login')
 // Register User
 Route.get('/register', 'Auth/RegistersController.register').as('register')
 
+//Acheter du ECFA
+Route.get('/achat', 'Achat/AchahsController.achat').as('achat')
 
 Route.group(()=>{
 

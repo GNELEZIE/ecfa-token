@@ -76,6 +76,7 @@
 							<li><a href="#faq">FAQ</a></li>
 							<li><a href="#contact">CONTACT</a></li>
 							@if(session.get('Users'))
+							<li><a href="{{ route('achat')}}">ACHETER</a></li>
 							<li><a href="{{ route('logout')}}" class="btn-nav-box">Déconnexion</a></li>
 						  @else
 							<li><a href="{{ route('register')}}" class="btn-nav-box">S'INSCRIRE</a></li>
