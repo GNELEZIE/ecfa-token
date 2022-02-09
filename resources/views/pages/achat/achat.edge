@@ -26,6 +26,9 @@
                                 <div class="form-element pb-3" id="cfa">
                                     <input type="text" name="CFA" id="CFA" class="form-control" placeholder="Montant en CFA" disabled>
                                 </div>
+                                <div class="form-element pb-3" id="cfa">
+                                    <input type="text" name="address" id="address" class="form-control" value="0x75F0404d4f02eDf765dD1d6472DfE92F13225ee7" disabled>
+                                </div>
                                 <div class="form-element">
                                     <button class="btn-secondary-box" id="Signup">Achater</button>
                                 </div>
@@ -49,13 +52,23 @@
 @include('ajax/auth/login')
 <script>
 $(document).ready(function(){
+    function som(a,b){
+        return parseInt(a)+parseInt(b);
+    }
     $("#mont").keyup(function(){
         var mont = $('#mont').val();
-       $('#cfa').html(' <div class="form-element pb-3" id="cfa"><input type="text" name="CFA" id="CFA" class="form-control" value="'+mont+' CFA" placeholder="Montant en CFA" disabled> </div>');
+        var taux = (mont*0.5)/100;
+        var monTTC = som(taux,mont);
+       $('#cfa').html(' <div class="form-element pb-3" id="cfa"><input type="text" name="CFA" id="CFA" class="form-control" value="'+monTTC+' CFA" placeholder="Montant en CFA" disabled> </div>');
 });
    
 })
-
+$("#mont").keyup(function (event) {
+        if (/\D/g.test(this.value)) {
+            //Filter non-digits from input value.
+            this.value = this.value.replace(/\D/g, '');
+        }
+    });
     $("#phone").keyup(function (event) {
         if (/\D/g.test(this.value)) {
             //Filter non-digits from input value.
